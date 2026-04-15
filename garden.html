@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Planting Guide — Jefferson Heights Community Garden</title>
+<title>Planting Guide — The Guest Garden</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="grain"></div>
 <header>
-<h1>Community Garden Guide</h1>
+<h1>The Guest Garden</h1>
+<p class="subtitle">A quest to grow food and community</p>
 <p>Jefferson Heights &middot; Chattanooga, TN &middot; Zone 7b &middot; Spring 2026</p>
 <nav>
 <a href="index.html">Home</a>
@@ -35,42 +36,31 @@
 <div class="timeline-item"><div class="timeline-date">October</div><div class="timeline-desc">Last harvests. Pull spent plants. Add compost from tumblers. Mulch or cardboard for winter.</div></div>
 </div></section>
 
-<!-- ===== SHOPPING LIST ===== -->
+<!-- ===== GROWING NOW ===== -->
 <section>
-<h2>Shopping list</h2>
-<p>Bring this to Lowe's or Home Depot. Check off as you go.</p>
-<div class="shop-section"><h4>Must-buy transplants</h4>
-<div class="shop-item"><label><input type="checkbox"> Cherry tomato &times;2</label></div>
-<div class="shop-item"><label><input type="checkbox"> Jalape&ntilde;o pepper &times;2</label></div></div>
-<div class="shop-section"><h4>Must-buy supplies</h4>
-<div class="shop-item"><label><input type="checkbox"> Floating row cover, 0.5 oz &times;2 pieces (~6&times;7 ft each, one per bed)</label></div></div>
-<div class="shop-section"><h4>Nice-to-have transplants</h4>
-<div class="shop-item"><label><input type="checkbox"> Heirloom tomato &times;2</label></div>
-<div class="shop-item"><label><input type="checkbox"> Banana pepper &times;2</label></div>
-<div class="shop-item"><label><input type="checkbox"> Shishito pepper &times;2</label></div>
-<div class="shop-item"><label><input type="checkbox"> Cucumber &times;2</label></div>
-<div class="shop-item"><label><input type="checkbox"> Cabbage 4-pack</label></div>
-<div class="shop-item"><label><input type="checkbox"> Kale 4-pack</label></div></div>
-<div class="shop-section"><h4>Seed packets</h4>
-<div class="shop-item"><label><input type="checkbox"> Bok choy</label></div>
-<div class="shop-item"><label><input type="checkbox"> Carrots (short variety: Chantenay or Paris Market)</label></div>
-<div class="shop-item"><label><input type="checkbox"> Beets</label></div>
-<div class="shop-item"><label><input type="checkbox"> Daikon radish</label></div>
-<div class="shop-item"><label><input type="checkbox"> Green onion (bunching)</label></div>
-<div class="shop-item"><label><input type="checkbox"> Okra (Clemson Spineless)</label></div>
-<div class="shop-item"><label><input type="checkbox"> Cilantro</label></div>
-<div class="shop-item"><label><input type="checkbox"> Dill</label></div>
-<div class="shop-item"><label><input type="checkbox"> Chamomile</label></div>
-<div class="shop-item"><label><input type="checkbox"> Zinnia</label></div>
-<div class="shop-item"><label><input type="checkbox"> Marigold (French type)</label></div></div>
-<div class="shop-section"><h4>Grab if you can (or get in May)</h4>
-<div class="shop-item"><label><input type="checkbox"> Blood meal or 10-10-10 fertilizer</label></div>
-<div class="shop-item"><label><input type="checkbox"> Bone meal</label></div>
-<div class="shop-item"><label><input type="checkbox"> Compost bags &times;2–3 (extra depth for carrot/beet zone)</label></div>
-<div class="shop-item"><label><input type="checkbox"> Basil transplant</label></div>
-<div class="shop-item"><label><input type="checkbox"> Rosemary transplant</label></div>
-<div class="shop-item"><label><input type="checkbox"> Thyme transplant</label></div>
-<div class="shop-item"><label><input type="checkbox"> Oregano transplant</label></div></div>
+<h2>Growing now</h2>
+<p>What's in the ground right now &mdash; sowed or transplanted.</p>
+<div id="growing-form" class="tracker-form">
+  <input type="text" id="growing-name" placeholder="Plant name (e.g. Bok choy)">
+  <input type="date" id="growing-date">
+  <input type="text" id="growing-notes" placeholder="Notes (e.g. 4 seeds, west bed)">
+  <button onclick="addGrowing()">Add plant</button>
+</div>
+<div id="growing-list"></div>
+</section>
+
+<!-- ===== HARVESTED ===== -->
+<section>
+<h2>Harvested</h2>
+<p>What we've pulled from the garden, and how much.</p>
+<div id="harvest-form" class="tracker-form">
+  <input type="text" id="harvest-name" placeholder="Plant name (e.g. Carrots)">
+  <input type="date" id="harvest-date">
+  <input type="text" id="harvest-yield" placeholder="Yield (e.g. 12 carrots)">
+  <input type="text" id="harvest-weight" placeholder="Weight (e.g. 2.5 lbs)">
+  <button onclick="addHarvest()">Log harvest</button>
+</div>
+<div id="harvest-list"></div>
 </section>
 
 <!-- ===== SESSION 1 ===== -->
@@ -190,5 +180,7 @@
 </section>
 
 </main>
-<footer>Community Garden Guide &middot; Jefferson Heights &middot; Chattanooga, TN &middot; Zone 7b &middot; Season 2026</footer>
+<footer>The Guest Garden &middot; Jefferson Heights &middot; Chattanooga, TN &middot; Zone 7b &middot; Season 2026</footer>
+
+<script src="script.js"></script>
 </body></html>
