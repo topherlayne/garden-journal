@@ -43,10 +43,7 @@ function renderLatestEntry() {
   var container = document.getElementById('latest-entry');
   if (!container) return;
   var entries = getEntries();
-  if (entries.length === 0) {
-    container.innerHTML = '<p class="empty-state">No journal entries yet. <a href="journal.html">Add your first entry.</a></p>';
-    return;
-  }
+  if (entries.length === 0) return; // keep static content from HTML
   var div = document.createElement('div');
   div.className = 'journal-entry';
   div.innerHTML = renderEntryHtml(entries[0], 0, false);
