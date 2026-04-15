@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garden Journal — Jefferson Heights Community Garden</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain"></div>
+<header>
+<h1>Community Garden Guide</h1>
+<p>Jefferson Heights &middot; Chattanooga, TN &middot; Zone 7b &middot; Spring 2026</p>
+<nav>
+<a href="index.html">Home</a>
+<a href="garden.html">Planting Guide</a>
+<a href="journal.html" class="active">Journal</a>
+</nav>
+</header>
+<main>
+
+<section>
+<h2>Garden journal</h2>
+<p>Write notes as you go. What you planted, what you noticed, what worked. This saves to your browser so it's here every time you open this page.</p>
+<div id="journal-form">
+  <textarea id="journal-input" placeholder="What happened in the garden today?"></textarea>
+  <button onclick="addEntry()">Add entry</button>
+</div>
+<div id="journal-entries"></div>
+</section>
+
+</main>
+<footer>Community Garden Guide &middot; Jefferson Heights &middot; Chattanooga, TN &middot; Zone 7b &middot; Season 2026</footer>
+
+<script src="script.js"></script>
+</body></html>

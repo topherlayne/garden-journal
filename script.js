@@ -5,9 +5,15 @@ function getEntries() {
 function saveEntries(entries) {
   localStorage.setItem('gardenJournal', JSON.stringify(entries));
 }
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
 function renderEntries() {
-  var entries = getEntries();
   var container = document.getElementById('journal-entries');
+  if (!container) return;
+  var entries = getEntries();
   container.innerHTML = '';
   entries.forEach(function(entry, i) {
     var div = document.createElement('div');
@@ -15,6 +21,25 @@ function renderEntries() {
     div.innerHTML = '<div class="je-date">' + entry.date + '</div><div class="je-text">' + escapeHtml(entry.text) + '</div><button class="je-delete" onclick="deleteEntry(' + i + ')" title="Delete">&times;</button>';
     container.appendChild(div);
   });
+}
+function renderLatestEntry() {
+  var container = document.getElementById('latest-entry');
+  if (!container) return;
+  var entries = getEntries();
+  if (entries.length === 0) {
+    container.innerHTML = '<p class="empty-state">No journal entries yet. <a href="journal.html">Add your first entry.</a></p>';
+    return;
+  }
+  var entry = entries[0];
+  var div = document.createElement('div');
+  div.className = 'journal-entry';
+  div.innerHTML = '<div class="je-date">' + entry.date + '</div><div class="je-text">' + escapeHtml(entry.text) + '</div>';
+  container.innerHTML = '';
+  container.appendChild(div);
+  var link = document.createElement('p');
+  link.style.marginTop = '1rem';
+  link.innerHTML = '<a href="journal.html">View all entries &rarr;</a>';
+  container.appendChild(link);
 }
 function addEntry() {
   var input = document.getElementById('journal-input');
@@ -35,12 +60,14 @@ function deleteEntry(index) {
   saveEntries(entries);
   renderEntries();
 }
-function escapeHtml(str) {
-  var div = document.createElement('div');
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-}
-document.getElementById('journal-input').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); addEntry(); }
-});
+
+// Page-specific initialization
 renderEntries();
+renderLatestEntry();
+
+var journalInput = document.getElementById('journal-input');
+if (journalInput) {
+  journalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); addEntry(); }
+  });
+}
