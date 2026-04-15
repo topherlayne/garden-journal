@@ -16,6 +16,7 @@
 <nav>
 <a href="index.html">Home</a>
 <a href="garden.html">Planting Guide</a>
+<a href="care.html">Care Guide</a>
 <a href="journal.html" class="active">Journal</a>
 </nav>
 </header>
@@ -23,14 +24,7 @@
 
 <section>
 <h2>Garden journal</h2>
-<p>Write notes as you go. What you planted, what you noticed, what worked. This saves to your browser so it's here every time you open this page.</p>
-<div id="journal-form">
-  <textarea id="journal-input" placeholder="What happened in the garden today?"></textarea>
-  <label class="photo-label" for="journal-photo">Add a photo (optional)</label>
-  <input type="file" id="journal-photo" accept="image/*">
-  <button onclick="addEntry()">Add entry</button>
-</div>
-<div id="journal-entries"></div>
+<p class="journal-intro">Notes from the dirt. What got planted, what surprised me, what I'm learning.</p>
 </section>
 
 <!-- ===== PERMANENT STORY ENTRY ===== -->
@@ -106,6 +100,20 @@
 <div class="story-caption">First sprouts. We're growing food.</div>
 </div>
 
+</div>
+</section>
+
+<!-- Dynamic entries from localStorage appear here, newest first -->
+<div id="journal-entries"></div>
+
+<!-- Add entry form, collapsed by default -->
+<section>
+<button class="add-entry-toggle" onclick="toggleJournalForm()">+ Add a new entry</button>
+<div id="journal-form" class="collapsed">
+  <textarea id="journal-input" placeholder="What happened in the garden today?"></textarea>
+  <label class="photo-label" for="journal-photo">Add a photo (optional)</label>
+  <input type="file" id="journal-photo" accept="image/*">
+  <button onclick="addEntry()">Add entry</button>
 </div>
 </section>
 

@@ -216,11 +216,51 @@ function renderHarvests() {
   });
 }
 
+// === Journal form toggle ===
+function toggleJournalForm() {
+  var form = document.getElementById('journal-form');
+  if (form) form.classList.toggle('collapsed');
+}
+
+// === Timeline auto-highlight ===
+function highlightTimeline() {
+  var timeline = document.getElementById('season-timeline');
+  if (!timeline) return;
+  var today = new Date();
+  today.setHours(0, 0, 0, 0);
+  var items = timeline.querySelectorAll('.timeline-item');
+  var found = false;
+  items.forEach(function(item) {
+    item.classList.remove('now');
+    var start = item.getAttribute('data-start');
+    var end = item.getAttribute('data-end');
+    if (start && end) {
+      var s = new Date(start + 'T00:00:00');
+      var e = new Date(end + 'T23:59:59');
+      if (today >= s && today <= e) {
+        item.classList.add('now');
+        found = true;
+      }
+    }
+  });
+  // If no exact match, highlight the next upcoming period
+  if (!found) {
+    for (var i = 0; i < items.length; i++) {
+      var start = items[i].getAttribute('data-start');
+      if (start && new Date(start + 'T00:00:00') > today) {
+        items[i].classList.add('now');
+        break;
+      }
+    }
+  }
+}
+
 // === Page initialization ===
 renderEntries();
 renderLatestEntry();
 renderGrowing();
 renderHarvests();
+highlightTimeline();
 
 var journalInput = document.getElementById('journal-input');
 if (journalInput) {
